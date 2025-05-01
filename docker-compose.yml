@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile  # FastAPI Dockerfile 위치
+    ports:
+      - "8001:8001"  # FastAPI 포트
+    env_file:
+      - .env  # 환경 변수 설정 파일
+    volumes:
+      - ./results:/app/results  # 모델 체크포인트 저장 경로
+      - ./chroma_db:/chroma/chroma  # ChromaDB 데이터 저장 경로
+
+  chromadb:
+    image: chromadb/chroma:1.0.7
+    ports:
+      - "8000:8000"  # ChromaDB 포트
+    volumes:
+      - ./chroma_db:/chroma/chroma  # ChromaDB 볼륨
+
+  frontend:
+    build:
+      context: ./frontend/vite-project  # React 프로젝트 위치
+      dockerfile: Dockerfile  # React Dockerfile 위치
+    ports:
+      - "3000:80"  # React 앱 포트
