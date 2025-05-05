@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 
 export default function App() {
   const [message, setMessage] = useState("");
-  const [chatLog, setChatLog] = useState([{ role: "bot", text: "안녕하세요 뉴클 관계자여러분.\r\n 영화 리뷰 관련 긍정/부정 판단 봇입니다. 영화리뷰 평을 작성하시면 긍정/부정을 판단하여 알려드립니다. 아래의 메시지를 사용하실 수 있습니다.\r\n\r\n 1. 이 영화는 재미 없었어\r\n2. 최신 영화 목록 보여줘\r\n3. 승부 영화에 대해 소개해줘" }]);
+  const [chatLog, setChatLog] = useState([{ role: "bot", text: "안녕하세요.\r\n 영화 리뷰 관련 긍정/부정 판단 봇입니다. 영화리뷰 평을 작성하시면 긍정/부정을 판단하여 알려드립니다. 아래의 메시지를 사용하실 수 있습니다.\r\n\r\n 1. 이 영화는 재미 없었어\r\n2. 최신 영화 목록 보여줘\r\n3. 승부 영화에 대해 소개해줘" }]);
   const [loading, setLoading] = useState(false);
   const chatContainerRef = useRef(null);
 
